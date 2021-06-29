@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>初めてのThymeleaf</title>
+</head>
+<body>
+<div th:text="2021年06月23日"></div>
+<div th:text="${COMPANY}"></div>
+山田太郎<br>
+
+<hr>
+
+<ul th:each="data:${ARY}">
+	<li th:text="${data}"></li>
+</ul>
+
+<hr>
+
+<ol th:each="data:${LIST}">
+	<li th:text="${data}"></li>
+</ol>
+
+<hr>
+
+<div th:each="data, status:${LIST}">
+	<span th:text="${status.count}"></span>. <span th:text="${data}"></span><br>
+</div>
+
+<hr>
+
+<div th:if="${AGE >= 20}">成人</div>
+<div th:unless="${AGE >= 20}">未成年</div>
+
+<hr>
+
+<div th:switch="${DATA}">
+	<div th:case="1">１です。</div>
+	<div th:case="2">２です。</div>
+	<div th:case="3">３です。</div>
+	<div th:case="*">１～３以外です。</div>
+</div>
+
+<hr>
+
+番号：<span th:text="${USER.id}"></span><br>
+名前：<span th:text="${USER.name}"></span><br>
+
+<hr>
+
+<div th:object=${USER}>
+番号：<span th:text="*{id}"></span><br>
+名前：<span th:text="*{name}"></span><br>
+</div>
+
+<hr>
+
+<div th:text="${TIME}"></div>
+
+</body>
+</html>
